@@ -1,0 +1,1 @@
+package com.codelens.repo; import com.codelens.domain.ReviewIssue; import org.springframework.data.jpa.repository.JpaRepository; public interface ReviewIssueRepository extends JpaRepository<ReviewIssue,Long>{}

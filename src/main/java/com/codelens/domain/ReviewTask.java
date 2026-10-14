@@ -1,0 +1,3 @@
+package com.codelens.domain;
+import jakarta.persistence.*; import java.time.Instant;
+@Entity @Table(name="review_task") public class ReviewTask { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) public Long id; @Column(unique=true,nullable=false) public String idempotencyKey; public Long projectId; public Long mrIid; public String headSha; @Enumerated(EnumType.STRING) public Status status; public String complexity; public int attempt; public String errorMessage; public Instant queuedAt; public Instant finishedAt; public enum Status { QUEUED,FETCHING_DIFF,REVIEWING,POST_PROCESSING,PUBLISHING,SUCCEEDED,PARTIAL_SUCCESS,FAILED,CANCELLED,SUPERSEDED,RETRY_WAIT } }

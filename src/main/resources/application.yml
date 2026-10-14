@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3307/codelens?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC}
+    username: ${DB_USERNAME:codelens}
+    password: ${DB_PASSWORD:codelens}
+  jpa: {hibernate: {ddl-auto: validate}, open-in-view: false}
+  flyway: {enabled: true}
+  data:
+    redis:
+      host: "${REDIS_HOST:localhost}"
+      port: "${REDIS_PORT:6379}"
+server:
+  port: "${PORT:8080}"
+codelens:
+  webhook-secret: ${GITLAB_WEBHOOK_SECRET:change-me}
+  queue-key: codelens:review:queue
+  max-retries: ${MAX_RETRIES:3}
+  llm:
+    api-key: ${DEEPSEEK_API_KEY:}
+    base-url: ${DEEPSEEK_BASE_URL:https://api.deepseek.com/v1}
+    model: ${DEEPSEEK_MODEL:deepseek-chat}
